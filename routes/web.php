@@ -19,3 +19,14 @@ Route::get('/', function () {
 });
 route::get('admin',[AdminController::class,'index']);
 route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
+
+route::group(['middleware'=> 'admin_auth'],function(){
+
+    route::get('admin/dashboard',[AdminController::class,'dashboard']);
+    route::get('admin/category',[AdminController::class,'category']); 
+
+
+}); 
+
+
+

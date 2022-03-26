@@ -23,7 +23,7 @@ class AdminController extends Controller
         if(isset($result['0']->id)){
             $request->session()->put('admin_login',true);
             $request->session()->put('admin_id',($result['0']->id));
-            return Redirect('Dashboard');
+            return Redirect('admin/dashboard');
 
         }
         else{
@@ -31,10 +31,9 @@ class AdminController extends Controller
             return redirect('admin');
 
         }
-
-       // return $request->post();
-
-
+    }
+    function dashboard(){
+        return view('admin.dashboard');
     }
 
    
