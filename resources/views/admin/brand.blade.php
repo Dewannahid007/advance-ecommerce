@@ -24,7 +24,7 @@
           <tr>
             <th>SL No:</th>
             <th>brand</th>
-            <th> Product pImage</th>
+            <th> Product Image</th>
             <th>Action</th>
           </tr>
        </thead>
