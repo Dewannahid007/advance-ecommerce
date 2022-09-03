@@ -7,7 +7,8 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\BrandController;
-
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\TaxController;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\Coupon;
@@ -27,11 +28,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 route::get('admin',[AdminController::class,'index']);
+route::get('/',[FrontController::class,'front_index']);
 
 route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 
@@ -81,6 +79,13 @@ route::group(['middleware'=>'admin_auth'],function(){
     route::get('admin/brand/delete/{id}',[BrandController::class,'delete']);
     route::get('admin/brand/status/{status}/{id}',[BrandController::class,'status']);
 
+    route::get('admin/tax',[TaxController::class,'tax']);
+    route::get('admin/tax/manage_tax',[TaxController::class,'manage_tax']);
+    route::get('admin/tax/manage_tax/{id}',[TaxController::class,'manage_tax']);
+    route::post('admin/tax/manage_tax_process',[TaxController::class,'manage_tax_process'])->name('tax.manage_tax_process');
+    route::get('admin/tax/delete/{id}',[TaxController::class,'delete']);
+    route::get('admin/tax/status/{status}/{id}',[TaxController::class,'status']);
+
     route::get('admin/product/product_attr_delete/{paid}/{pid}',[ProductController::class,'product_attr_delete']);
     route::get('admin/product/product_images_delete/{piid}/{pid}',[ProductController::class,'product_images_delete']);
 
@@ -92,8 +97,7 @@ route::group(['middleware'=>'admin_auth'],function(){
         session()->flash('error','You Logout Successfully');
         return redirect('admin');
     
-    });
-    
+    });    
 
 });
     

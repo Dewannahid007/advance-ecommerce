@@ -73,6 +73,11 @@
                                 <i class="fas fa-tachometer-alt"></i>Color</a>
                         </li>
                         <li>
+                            <a href="{{url('admin/tax')}}">
+                            <i class="fas fa-tachometer-alt"></i>Tax</a>
+                        </li>
+
+                        <li>
                             <a href="{{url('admin/product')}}">
                                 <i class="fas fa-tachometer-alt"></i>Product</a>
                         </li>
@@ -121,6 +126,10 @@
                         <li class="@yield('color_select')">
                             <a href="{{url('admin/color')}}">
                             <i class="fas fa-paint-brush"></i>Color</a>
+                        </li>
+                        <li class="@yield('tax_select')">
+                            <a href="{{url('admin/tax')}}">
+                            <i class='fa fa-dollar'></i> Tax</a>
                         </li>
                         <li class="@yield('product_select')">
                             <a href=" {{url('admin/product')}}">

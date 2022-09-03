@@ -25,7 +25,7 @@ class AdminController extends Controller
         $email=$request->post('email');
         $password=$request->post('password');
 
-        //$result=Admin::where(['email'=>$email , 'password'=>$password])->get();
+       // $result=Admin::where(['email'=>$email , 'password'=>$password])->get();
         $result=Admin::where(['email'=>$email])->first();
 
         if($result){
@@ -42,11 +42,9 @@ class AdminController extends Controller
             }
 
         }
-        else{
-            $request->session()->flash('error','Please Enter Valid Login Information');
-            return redirect('admin');
-        }
+       
     }
+    
     function dashboard(){
         return view('admin.dashboard');
     }

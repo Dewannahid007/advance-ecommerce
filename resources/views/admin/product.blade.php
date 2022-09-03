@@ -28,11 +28,6 @@
             <th>Category</th>
             <th>Brand</th>
             <th>Model</th>
-            <th>Short Description</th>
-            <th>Discription</th>
-            <th>Keywords</th>
-            <th>Technical Specification</th>
-            <th>Uses</th>
             <th>Warranty</th>
             <th>Action</th>
 
@@ -53,11 +48,6 @@
             <td> {{$list->category_id}}</td>
             <td> {{$list->brand}}</td>
             <td> {{$list->model}}</td>
-            <td> {{$list->short_desc}}</td>
-            <td> {{$list->desc}}</td>
-            <td> {{$list->keywords}}</td>
-            <td> {{$list->technical_specification}}</td>
-            <td> {{$list->uses}}</td>
             <td> {{$list->warranty}}</td>
 
             <td>
