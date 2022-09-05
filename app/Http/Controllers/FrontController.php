@@ -71,10 +71,16 @@ class FrontController extends Controller
 
 
         
-        $result['home_brand'] = DB::table('brands')
-            ->where(['status' => 1])
+             $result['home_brand'] = DB::table('brands')
+            ->where(['status'=>1])
             ->get();
+            
+            
 
+            $result['home_banner']=DB::table('home_banners')
+            ->where(['status'=>1])
+            ->get();   
+  
         return view('front.index', $result);
     }
 }

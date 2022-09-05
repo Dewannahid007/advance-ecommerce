@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\HomeBannerController;
 use App\Http\Controllers\TaxController;
 use App\Models\Admin;
 use App\Models\Category;
@@ -15,6 +16,7 @@ use App\Models\Coupon;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Color;
+use App\Models\HomeBanner;
 Use App\Models\Size;
 use Illuminate\Support\Facades\Route;
 
@@ -86,9 +88,15 @@ route::group(['middleware'=>'admin_auth'],function(){
     route::get('admin/tax/delete/{id}',[TaxController::class,'delete']);
     route::get('admin/tax/status/{status}/{id}',[TaxController::class,'status']);
 
+    route::get('admin/home_banner',[HomeBannerController::class,'home_banner']);
+    route::get('admin/home_banner/manage_home_banner',[HomeBannerController::class,'manage_home_banner']);
+    route::get('admin/home_banner/manage_home_banner/{id}',[HomeBannerController::class,'manage_home_banner']);
+    route::post('admin/home_banner/manage_home_banner_process',[HomeBannerController::class,'manage_home_banner_process'])->name('home_banner.manage_home_banner_process');
+    route::get('admin/home_banner/delete/{id}',[HomeBannerController::class,'delete']);
+    route::get('admin/home_banner/status/{status}/{id}',[HomeBannerController::class,'status']);
+
     route::get('admin/product/product_attr_delete/{paid}/{pid}',[ProductController::class,'product_attr_delete']);
     route::get('admin/product/product_images_delete/{piid}/{pid}',[ProductController::class,'product_images_delete']);
-
 
     
     Route::get('admin/logout', function(){

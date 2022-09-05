@@ -76,11 +76,16 @@
                             <a href="{{url('admin/tax')}}">
                             <i class="fas fa-tachometer-alt"></i>Tax</a>
                         </li>
+                        <li>
+                            <a href="{{url('admin/home_banner')}}">
+                                <i class="fas fa-tachometer-alt"></i>Home Banner</a>
+                        </li>
 
                         <li>
                             <a href="{{url('admin/product')}}">
                                 <i class="fas fa-tachometer-alt"></i>Product</a>
                         </li>
+                        
 
                     </ul>
                 </div>
@@ -130,6 +135,10 @@
                         <li class="@yield('tax_select')">
                             <a href="{{url('admin/tax')}}">
                             <i class='fa fa-dollar'></i> Tax</a>
+                        </li>
+                        <li class="@yield('home_banner_select')">
+                            <a href="{{url('admin/home_banner')}}">
+                            <i class='fas fa-image'></i> Home Banner</a>
                         </li>
                         <li class="@yield('product_select')">
                             <a href=" {{url('admin/product')}}">
