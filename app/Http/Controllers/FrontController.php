@@ -69,18 +69,48 @@ class FrontController extends Controller
                     ->get();
             }
 
-
-        
              $result['home_brand'] = DB::table('brands')
             ->where(['status'=>1])
             ->get();
             
-            
-
             $result['home_banner']=DB::table('home_banners')
             ->where(['status'=>1])
             ->get();   
   
         return view('front.index', $result);
+    }
+    public function product(Request $request,$slug){
+
+        $result['product'] = DB::table('products')
+                ->where(['status' => 1])
+                ->where(['slug' =>$slug ])
+                ->get();
+
+            foreach ($result['product'] as $list1) {
+                $result['product_attr'][$list1->id] = DB::table('products_attr')
+                    ->leftJoin('sizes', 'sizes.id', '=', 'products_attr.size_id')
+                    ->leftJoin('colors', 'colors.id', '=', 'products_attr.color_id')
+                    ->where(['products_attr.products_id' => $list1->id])
+                    ->get();
+            }
+            $result['related_product']=
+            DB::table('products')
+            ->where(['status'=>1])
+            ->where('slug','!=',$slug)
+            ->where(['category_id'=>$result['product'][0]->category_id])
+            ->get();
+            foreach($result['related_product'] as $list1){
+                $result['related_product_attr'][$list1->id]=
+                DB::table('products_attr')
+                    ->leftJoin('sizes', 'sizes.id', '=', 'products_attr.size_id')
+                    ->leftJoin('colors', 'colors.id', '=', 'products_attr.color_id')
+                    ->where(['products_attr.products_id' => $list1->id])
+                    ->get();
+                
+            }
+
+        return view('front.product',$result);
+
+
     }
 }

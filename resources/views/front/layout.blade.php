@@ -193,7 +193,7 @@
           </div>
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
-            {{GetTopNavCat()}}
+            {{!!GetTopNavCat()!!}}
           </div><!--/.nav-collapse -->
         </div>
       </div>       

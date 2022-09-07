@@ -4181,5 +4181,30 @@ img {
   #aa-header .aa-header-top .aa-header-top-right .aa-head-top-nav-right li a {   
     padding: 5px 2px;
   }
+
+}
+.lead_time{
+  color: red;
+  margin-top: -12px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.aa-color-black{
+  background-color: #000;
+}
+.aa-color-blue{
+  background-color: #0000FF;
+}
+.aa-color-red{
+  background-color: red;
+}
+.aa-color-green{
+  background-color: green;
+}
+.aa-color-yellow{
+  background-color: yellow;
+}
+.aa-color-white{
+  background-color: white;
 }
 

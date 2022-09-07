@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 */
 route::get('admin',[AdminController::class,'index']);
 route::get('/',[FrontController::class,'front_index']);
+route::get('product/{id}',[FrontController::class,'product']);
 
 route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 
