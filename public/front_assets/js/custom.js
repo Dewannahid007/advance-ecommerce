@@ -357,3 +357,7 @@ jQuery(function($){
     
 });
 
+function change_product_color_image(img){
+  jQuery('.simplelens-big-image-container').html('<a data-lens-image="'+img+'"class="simplelens-lens-image"><img src="'+img+'" class="simplelens-big-image"></a>');
+}
+

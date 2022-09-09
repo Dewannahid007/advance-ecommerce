@@ -12,7 +12,7 @@
 </div>
 @endif
 <h3>Product Lists</h3><Br>
-<a href="{{url('admin/product/manage_product ')}}">
+<a href="{{url('admin/product/manage_product')}}">
 <button type="button"  class="btn btn-success">Add Product</button>
 </a>
 <br><br>

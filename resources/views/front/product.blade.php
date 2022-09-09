@@ -32,8 +32,14 @@
                       <div class="simpleLens-thumbnails-container">
                           <a data-big-image="{{asset('storage/media/'.$product[0]->image)}}" data-lens-image="{{asset('storage/media/'.$product[0]->image)}}" class="simpleLens-thumbnail-wrapper" href="#">
                             <img src="{{asset('storage/media/'.$product[0]->image)}}" width="50px">
-                          </a>                                    
-                
+                          </a>
+                          @if(isset($product_images[$product[0]->id][0]))
+                          @foreach($product_images[$product[0]->id] as $list)
+                          <a data-big-image="{{asset('storage/media/'.$list->images)}}" data-lens-image="{{asset('storage/media/'.$list->images)}}" class="simpleLens-thumbnail-wrapper" href="#">
+                            <img src="{{asset('storage/media/'.$list->images)}}" width="50px">
+                          </a>
+                          @endforeach
+                          @endif
                       </div>
                     </div>
                   </div>
@@ -66,7 +72,7 @@
                     <div class="aa-color-tag">
                       @foreach($product_attr[$product[0]->id] as $attr)
                       @if($attr->color!='')
-                      <a href="#" class="aa-color-{{strtolower($attr->color)}}"></a>
+                      <a href="javascript:void(0)" class="aa-color-{{strtolower($attr->color)}}" onclick=change_product_color_image("{{asset('storage/media/'.$attr->image_attr)}}")></a>
                       @endif
                       @endforeach
                                             

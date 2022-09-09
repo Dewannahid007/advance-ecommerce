@@ -43,8 +43,8 @@ class ProductController extends Controller
                 ->get();
 
             if (!isset($productImagesArr[0])) {
-                $result['productImagesArr'][0]['id'] = '';
-                $result['productImagesArr'][0]['images'] = '';
+                $result['productImagesArr'][0]['id']='';
+                $result['productImagesArr'][0]['images']='';
             } else {
                 $result['productImagesArr'] = $productImagesArr;
             }
@@ -52,7 +52,7 @@ class ProductController extends Controller
             $result['category_id'] = '';
             $result['name'] = '';
             $result['image'] = '';
-            $result['slug'] = '';
+            $result['slug'] = ''; 
             $result['brand'] = '';
             $result['model'] = '';
             $result['short_desc'] = '';
@@ -200,6 +200,29 @@ class ProductController extends Controller
             }
         }
         /* Product Attributes Ends*/
+        $piidArr=$request->post('piid');
+        foreach($piidArr as $key=>$val){
+            $productImageArr['products_id']=$pid;
+            if($request->hasFile("images.$key")){
+                $rand=rand('111111111','999999999');
+                $images=$request->file("images.$key");
+                $ext=$images->extension();
+                $image_name=$rand.'.'.$ext;
+                $request->file("images.$key")->storeAs('/public/media',$image_name);
+                $productImageArr['images']=$image_name;
+
+            }
+            if($piidArr[$key]!=''){
+                DB::table('product_images')->where(
+                    ['id'=>$piidArr[$key]])->update($productImageArr);
+                
+            }else{
+                DB::table('product_images')->insert($productImageArr);
+            }
+             
+
+        }
+
 
         $request->session()->Flash('message', $msg);
         return redirect('admin/product');

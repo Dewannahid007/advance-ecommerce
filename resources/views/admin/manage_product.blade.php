@@ -231,21 +231,22 @@
             </div>
             <h2 class="mb10">&nbsp;&nbsp; Product Images</h2>
 
-            <div class="col-lg-12" id="product_images_box">
-                @php
-                $loop_count_num=1;
-                @endphp
-                @foreach($productImagesArr as $key=>$val)
-                @php
-                $loop_count_prev=$loop_count_num;
-                 $pIArr=(array)$val;
-                 @endphp
-                 <input id="pIArr" name="pIArr[]" type="hidden" value="{{$pIArr['id']}}">
+            <div class="col-lg-12">
+                
 
                <div class="card">
                   <div class="card-body">
                      <div class="form-group">
                         <div class="row"id="product_images_box" >
+                  @php
+                  $loop_count_num=1;
+                  @endphp
+                  @foreach($productImagesArr as $key=>$val)
+                  @php
+                  $loop_count_prev=$loop_count_num;
+                  $pIArr=(array)$val;
+                 @endphp
+                 <input id="piid" name="piid[]" type="hidden" value="{{$pIArr['id']}}">
                            <div class="col-md-3 product_images_{{$loop_count_num++}}" > 
                               <label for="images" class="control-label mb-1">Images</label>
                               <input id="images"  name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false">
@@ -266,6 +267,7 @@
                                  @endif
                                  
                               </div>
+                              
                            </div>
                            
                         </div>
@@ -401,7 +403,7 @@
    
        html+='</div></div></div></div>';
    
-        jQuery('#product_attr_box').append(html)
+        jQuery('#product_attr_box').append(html) 
    }
    function remove_more(loop_count){
             jQuery('#product_attr_'+loop_count).remove();
@@ -410,9 +412,9 @@
         var loop_image_count=1;
         function add_image_more(){
          loop_image_count++; 
-          var html='<input id="pIArr" name="pIArr[]" type="hidden" value=""><div class="col-md-3 product_images_'+loop_image_count+'"><label for="images" class="control-label mb-1">Image</label><input id="images"  name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false"></div>';
+          var html='<input id="piid" name="piid[]" type="hidden" value=""><div class="col-md-3 product_images_'+loop_image_count+'"><label for="images" class="control-label mb-1">Image</label><input id="images"  name="images[]" type="file" class="form-control" aria-required="true" aria-invalid="false"></div>';
    
-         html+='<div class="col-md-3 product_images_'+loop_image_count+'"><label for="remove_attr" class="control-label mb-1"></label><button type="button" class="btn btn-danger btn-lg" onclick=remove_image_more("'+loop_image_count+'")><i class="fa fa-minus"> </i>Remove</button></div></div> ';
+         html+='<div class="col-md-3 product_images_'+loop_image_count+'""><label for="attr_images"class="control-label mb-1"></label><button type="button"class="btn btn-danger btn-lg" onclick=remove_image_more("'+loop_image_count+'")><i class="fa fa-minus"> </i>Remove</button></div></div> ';
          jQuery('#product_images_box').append(html)
          
 
