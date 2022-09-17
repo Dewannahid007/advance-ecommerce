@@ -1,5 +1,5 @@
 @extends('front/layout')
-@section('page_title','$product[0]->name')
+@section('page_title','Home')
 @section('container')
 <section id="aa-slider">
     <div class="aa-slider-area">

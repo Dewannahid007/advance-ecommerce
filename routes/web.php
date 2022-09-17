@@ -34,6 +34,9 @@ route::get('admin',[AdminController::class,'index']);
 route::get('/',[FrontController::class,'front_index']);
 route::get('product/{id}',[FrontController::class,'product']);
 
+route::post('add_to_cart',[FrontController::class,'add_to_cart']);
+
+
 route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 
 route::group(['middleware'=>'admin_auth'],function(){  
