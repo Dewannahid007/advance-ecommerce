@@ -258,10 +258,6 @@
   <input type="hidden" id="color_id" name="color_id">
   <input type="hidden" id="pqty" name="pqty">
   <input type="hidden" id="product_id" name="product_id">
-  
-
-
- 
 
   @csrf
   </form>

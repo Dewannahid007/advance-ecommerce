@@ -99,10 +99,10 @@
                         <li>
                           <figure>
                             <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" height="100px" width="100px" alt="{{$productArr->name}}"></a>
-                            <a class="aa-add-card-btn"href="{{url('product/'.$productArr->slug)}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                            <a class="aa-add-card-btn" href="javascript:void(0)" onclick="home_add_to_cart('{{$productArr->id}}','{{$home_product_attr[$productArr->id][0]->size}}','{{$home_product_attr[$productArr->id][0]->color}}')" ><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                               <figcaption>
                               <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
-                              <span class="aa-product-price">MRP {{$home_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>
+                              <span class="aa-product-price">MRP {{$home_product_attr[$productArr->id][0]->price}}</span><span  class="aa-product-price"><del>
                               {{$home_product_attr[$productArr->id][0]->mrp}}
                               </del></span>
                             </figcaption>
@@ -315,4 +315,13 @@
       </div>
     </div>
   </section>
+  <input type="hidden" id="qty" value="1">
+  <form id="frmAddToCart">
+  <input type="hidden" id="size_id" name="size_id">
+  <input type="hidden" id="color_id" name="color_id">
+  <input type="hidden" id="pqty" name="pqty">
+  <input type="hidden" id="product_id" name="product_id">
+
+  @csrf
+  </form>
 @endsection

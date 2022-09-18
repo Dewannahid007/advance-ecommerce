@@ -35,6 +35,8 @@ route::get('/',[FrontController::class,'front_index']);
 route::get('product/{id}',[FrontController::class,'product']);
 
 route::post('add_to_cart',[FrontController::class,'add_to_cart']);
+route::get('cart',[FrontController::class,'cart']);
+
 
 
 route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
